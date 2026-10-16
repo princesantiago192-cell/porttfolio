@@ -11,6 +11,7 @@
   <header class="site-header">
     <nav class="navbar container" aria-label="Main navigation">
       <a class="logo" href="#home">PRINCE<span>.</span></a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">🌙 Dark mode</button>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
@@ -28,7 +29,7 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">HELLO, WELCOME TO MY PORTFOLIO</p>
-          <h1>I'm <span>Prince GB B. Santiago</span></h1>
+          <h1>I'm <span>Prince GB Santiago</span></h1>
           <h2>College Student & Aspiring IT Professional</h2>
           <p class="hero-description">I’m a student who enjoys learning about technology, building useful projects, and improving my skills one step at a time.</p>
           <div class="hero-actions">
@@ -39,7 +40,7 @@
         </div>
         <div class="hero-image-wrap">
           <div class="image-accent"></div>
-          <img class="profile-image" src="profile.jpg" alt="Portrait of Prince GB B. Santiago">
+          <img class="profile-image" src="images/profile.jpg" alt="Portrait of Prince GB B. Santiago">
           <div class="image-caption"><span class="status-dot"></span> Always learning, always growing</div>
         </div>
       </div>
@@ -108,6 +109,7 @@
         </div>
         <div class="projects-grid">
           <article class="project-card">
+            <img class="project-image" src="images/projects/rtt-cafe.png" alt="The RTT Café main menu design">
             <div class="project-icon">☕</div>
             <p class="project-label">DESKTOP APPLICATION</p>
             <h3>RTT Café POS & Inventory System</h3>
@@ -115,6 +117,7 @@
             <div class="tags"><span>Visual Basic</span><span>Database</span><span>UI Design</span></div>
           </article>
           <article class="project-card">
+            <img class="project-image" src="images/projects/login-form.jpg" alt="HTML login form project screenshot">
             <div class="project-icon">⌘</div>
             <p class="project-label">WEB DEVELOPMENT</p>
             <h3>Login & Registration Forms</h3>
@@ -122,6 +125,7 @@
             <div class="tags"><span>HTML</span><span>CSS</span><span>Forms</span></div>
           </article>
           <article class="project-card">
+            <img class="project-image" src="images/projects/sql-practice.jpg" alt="Oracle SQL animal table practice screenshot">
             <div class="project-icon">▤</div>
             <p class="project-label">DATABASE PRACTICE</p>
             <h3>Student Records & SQL Exercises</h3>
@@ -159,12 +163,12 @@
         <div class="contact-card">
           <div class="contact-symbol">✉</div>
           <h3>Get in Touch</h3>
-          <p>For school-related projects, collaboration, or opportunities, you can contact me here. </p>
-          <p class="contact-placeholder"><strong>Email:</strong> princcsantiago@gmail.com </p>
+          <p>For school-related projects, collaboration, or opportunities, contact me here.</p>
+          <p class="contact-placeholder"><strong>Email:</strong> Add your email address here</p>
           <p class="contact-placeholder"><strong>Location:</strong> Quezon City, Philippines</p>
-          <a class="button button-primary" href="mailto:princcsantiago@gmail.com">Email Me</a>
-         
-        </d
+          <a class="button button-primary" href="mailto:princesantiago192@gmail.com">Email Me</a>
+          
+        </div>
       </div>
     </section>
   </main>
@@ -188,6 +192,19 @@
         navLinks.classList.remove('show');
         menuToggle.setAttribute('aria-expanded', 'false');
       });
+    });
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      themeToggle.textContent = '☀️ Light mode';
+      themeToggle.setAttribute('aria-pressed', 'true');
+    }
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.body.classList.toggle('dark-mode');
+      themeToggle.textContent = isDark ? '☀️ Light mode' : '🌙 Dark mode';
+      themeToggle.setAttribute('aria-pressed', String(isDark));
+      localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light');
     });
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
